@@ -150,7 +150,7 @@ public class CustomMethod extends Method {
         if (isAddEndingAnnotation) {
             sb.append(System.getProperty("line.separator"));
             sb.append(System.getProperty("line.separator"));
-            sb.append("    //====================以下是自定义方法====================");
+            sb.append("    //====================The Following Methods Are Added Manually====================");
         }
         return sb.toString();
     }
