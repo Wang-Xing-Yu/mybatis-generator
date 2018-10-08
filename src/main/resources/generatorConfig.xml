@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="generate" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- 生成的model实现Serializable借口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <!-- 该插件给实体类添加toString() -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 生成一个新的selectByExample方法,接受一个RowBounds参数 -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+
+        <!-- 自定义方法 -->
+        <plugin type="com.sinosoft.newstandard.mybatisgenerator.config.mybatis.generator.plugins.MapperPlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.sinosoft.newstandard.mybatisgenerator.dao"/>
+        </plugin>
+
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/newstandard?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="root" password="root">
+        </jdbcConnection>
+
+        <!--匹配数据库字段和实体类的字段类型-->
+        <javaTypeResolver type="com.sinosoft.newstandard.mybatisgenerator.config.mybatis.generator.CustomJavaTypeResolverDefaultImpl"/>
+
+        <!--生成的entity 包路径 -->
+        <javaModelGenerator targetPackage="entity" targetProject="D:\\mybatis">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!--<property name="rootClass" value=""/>-->
+        </javaModelGenerator>
+
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:\\mybatis">
+            <property name="enableSubPackages" value="ture"/>
+        </sqlMapGenerator>
+
+        <!-- type="ANNOTATEDMAPPER",生成基于注解的Mapper接口 type="MIXEDMAPPER",生成最小的基于注解的Mapper接口 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口 -->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="dao" targetProject="D:\\mybatis">
+            <property name="enableSubPackages" value="ture"/>
+            <!--<property name="rootInterface" value=""/>-->
+        </javaClientGenerator>
+
+        <!--对应数据库表名 -->
+        <!--<table tableName="" domainObjectName="">-->
+        <!--生成与数据库一致的属性-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--插入后返回插入的ID,前提是ID自增的-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="sys_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+    </context>
+</generatorConfiguration>

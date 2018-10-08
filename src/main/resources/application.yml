@@ -1,0 +1,3 @@
+mybatis:
+  generator:
+    generatorConfigFile: generatorConfig.xml
